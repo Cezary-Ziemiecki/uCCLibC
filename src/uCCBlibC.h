@@ -32,7 +32,7 @@ struct CANFrame
 	void SetData(const char* message);
 
 private:
-	char _data[MAX_DATA_LENGTH + 1];
+	unsigned char _data[MAX_DATA_LENGTH + 1];
 	uint32 _id;
 	bool _remote;
 	bool _extended;

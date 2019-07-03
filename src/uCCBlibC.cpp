@@ -50,7 +50,7 @@ void CANFrame::SetRTRDataLength(uint8 len)
 	_RTRDataLength = len;
 }
 
-const char* CANFrame::GetData() { return _data; }
+const unsigned char* CANFrame::GetData() { return _data; }
 
 void CANFrame::SetData(const char* message)
 {
@@ -78,7 +78,7 @@ std::string CANFrame::ToString()
 		{
 			result = "T";
 			result += NumToHexString(_id, 8);
-			size_t len = std::strlen(_data);
+			size_t len = std::strlen((char*)_data);
 			result += (char)('0' + len);
 			for (uint8 i = 0; i < len; i++)
 			{
@@ -98,7 +98,7 @@ std::string CANFrame::ToString()
 		{
 			result = "t";
 			result += NumToHexString(_id, 3);
-			size_t len = std::strlen(_data);
+			size_t len = std::strlen((char*)_data);
 			if (len > CANFrame::MAX_DATA_LENGTH)
 				len = CANFrame::MAX_DATA_LENGTH;
 			result += (char)('0' + len);
